@@ -10,6 +10,20 @@ namespace Shapes
     {
         static void Main(string[] args)
         {
+
+            ShapeFactory shape = new ShapeFactory();
+
+            shape.GetShape(ShapeType.LINE).Draw();
+            shape.GetShape(ShapeType.CIRCLE).Draw();
+            shape.GetShape(ShapeType.RECTANGLE).Draw();
+
+            if(shape.GetShape(ShapeType.TRIANGLE) == null) {
+                Console.WriteLine("\nInvalid shape.");
+            }
+
+            Console.WriteLine("\n\nPress any key to exit...");
+            Console.ReadKey();
+
         }
     }
     
@@ -17,14 +31,27 @@ namespace Shapes
 
     class ShapeFactory : GeometricShape
     {
-        public GeometricShape getShape(ShapeType type)
+        public GeometricShape GetShape(ShapeType type)
         {
+            switch(type)
+            {
+                case ShapeType.LINE:
+                    return new Line();
 
+                case ShapeType.CIRCLE:
+                    return new Circle();
+
+                case ShapeType.RECTANGLE:
+                    return new Rectangle();
+
+                default:
+                    return null;
+            }
         }
 
-        void GeometricShape.Draw()
+        void GeometricShape.Draw() // this does nothing
         {
-
+            return;
         }
     }
 
