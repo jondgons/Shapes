@@ -49,9 +49,9 @@ namespace Shapes
             }
         }
 
-        void GeometricShape.Draw() // this does nothing
+        void GeometricShape.Draw()
         {
-            return;
+            Console.WriteLine("<shape> is drawn.");
         }
     }
 
